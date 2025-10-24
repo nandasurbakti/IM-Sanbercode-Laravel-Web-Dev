@@ -44,7 +44,7 @@ SELECT * FROM items WHERE price > 1000000;
 item pada table items yang memiliki name serupa atau mirip
 SELECT * FROM items WHERE name LIKE "%sang%";
 
-data items menggunakan left join
+data items menggunakan inner join
 SELECT a.name, a.description, a.price, a.stock, a.category_id, b.name FROM items a INNER JOIN categories b ON a.category_id = b.id;
 
 Soal 5 Mengubah Data dari Database
