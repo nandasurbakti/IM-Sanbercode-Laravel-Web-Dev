@@ -1,0 +1,51 @@
+Soal 1 Membuat Database
+1. CREATE DATABASE myshop;
+
+Soal 2 Membuat Table di Dalam Database
+2. CREATE TABLE users ( 
+id INT PRIMARY KEY AUTO_INCREMENT, 
+name VARCHAR(255) NOT NULL, 
+email VARCHAR(255) NOT NULL UNIQUE, 
+password VARCHAR(255) 
+);
+
+CREATE TABLE categories ( 
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE items ( 
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    price INT NOT NULL,
+    stock INT NOT NULL,
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+Soal 3 Memasukkan Data pada Table
+3. INSERT INTO users(name, email, password)
+VALUES
+("John Doe", "john@doe.com", "johm123"), ("Jane Doe", "jane@doe.com", "jenita123");
+
+INSERT INTO categories(name) VALUES ("gadget"), ("cloth"), ("men"), ("women"), ("branded");
+
+INSERT INTO items(name, description, price, stock, category_id) VALUES 
+("Sumsang b50", "hape keren dari merek sumsang", 4000000, 100, 1), ("Uniklooh", "baju keren dari brand ternama", 500000, 50, 2),
+("IMHO Watch", "jam tangan anak yang jujur banget", 2000000, 10, 1);
+
+Soal 4 Mengambil Data dari Database
+SELECT id, name, email FROM users;
+
+item pada table items yang memiliki harga di atas 1000000 (satu juta)
+SELECT * FROM items WHERE price > 1000000;
+
+item pada table items yang memiliki name serupa atau mirip
+SELECT * FROM items WHERE name LIKE "%sang%";
+
+data items menggunakan left join
+SELECT a.name, a.description, a.price, a.stock, a.category_id, b.name FROM items a INNER JOIN categories b ON a.category_id = b.id;
+
+Soal 5 Mengubah Data dari Database
+UPDATE items SET name = "sumsang b50", price = 2500000 WHERE id = 1;
